@@ -1,0 +1,37 @@
+[
+  {
+    "slug": "pixware-launcher-beta",
+    "title": "Pixware Launcher Beta Yayında",
+    "date": "2026-05-10",
+    "excerpt": "Oyun kütüphanenizi tek yerden yönetin — mor neon temalı launcher'ımız beta sürümüyle kullanıma hazır.",
+    "body": "<p>Pixware Studios Launcher'ın ilk beta sürümünü duyurmaktan heyecan duyuyoruz. Oyun kütüphanenizi, mağazayı ve arkadaş listenizi tek bir masaüstü uygulamasında bir araya getirdik.</p><h2>Yeni özellikler</h2><p>Beta sürümünde oyun kütüphanesi, mağaza vitrini, indirme yöneticisi ve arkadaş sistemi yer alıyor. Mor neon tema launcher'ın her köşesinde hissediliyor.</p><p>Kaynak koddan çalıştırmak için launcher sayfamızdaki kurulum talimatlarına göz atın. Yakında Windows ve Linux için hazır kurulum paketleri de gelecek.</p>"
+  },
+  {
+    "slug": "cyber-quest-guncelleme",
+    "title": "Cyber Quest — Neon District Güncellemesi",
+    "date": "2026-04-22",
+    "excerpt": "Yeni bölge, yeni görevler ve performans iyileştirmeleri Cyber Quest'e geliyor.",
+    "body": "<p>Neon District güncellemesi Cyber Quest dünyasını genişletiyor. Üç yeni görev hattı, iki boss ve geliştirilmiş ışıklandırma sistemi bu yamada.</p><h2>Performans</h2><p>Orta seviye donanımlarda %15'e varan FPS artışı sağladık. Launcher üzerinden güncellemeyi otomatik alabileceksiniz.</p>"
+  },
+  {
+    "slug": "stüdyo-kurulus",
+    "title": "Pixware Studios Resmen Kuruldu",
+    "date": "2026-03-01",
+    "excerpt": "Bağımsız oyun geliştirme yolculuğumuza başlıyoruz. Vizyonumuz: neon, hikaye ve topluluk.",
+    "body": "<p>Pixware Studios, bağımsız oyun geliştirmeye tutkuyla bağlı küçük bir ekip olarak kuruldu. Unity ve Electron ile hem oyun hem de launcher ekosistemi inşa ediyoruz.</p><p>Bizi takip etmeye devam edin — ilk oyunlarımız ve launcher yol haritamız hakkında düzenli haberler paylaşacağız.</p>"
+  },
+  {
+    "slug": "void-clash-alfa",
+    "title": "Void Clash Alfa Testi Başlıyor",
+    "date": "2026-05-15",
+    "excerpt": "Çok oyunculu arena oyunumuzun kapalı alfa testine davetlisiniz.",
+    "body": "<p>Void Clash'in kapalı alfası launcher üzerinden erişilebilir olacak. 4v4 arena modu ve temel eşleştirme sistemi test edilecek.</p><p>Alfa testine katılmak için iletişim formundan başvurabilirsiniz.</p>"
+  },
+  {
+    "slug": "kariyer-staj",
+    "title": "Yaz Staj Programı 2026",
+    "date": "2026-05-01",
+    "excerpt": "Oyun geliştirme ve UI/UX alanında stajyer arıyoruz.",
+    "body": "<p>2026 yaz staj programımız açıldı. Unity, web veya Electron deneyimi olan öğrencileri ekibimize katılmaya davet ediyoruz.</p><p>Detaylar kariyer sayfamızda.</p>"
+  }
+]

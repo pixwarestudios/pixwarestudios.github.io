@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "slug": "cyber-quest",
+    "name": "Cyber Quest",
+    "category": "RPG",
+    "rating": 4.8,
+    "size": "2.5GB",
+    "emoji": "🎭",
+    "description": "Futuristik bir dünyada macera yaşayın. Neon şehirler, gizemli protokoller ve epik boss savaşları sizi bekliyor.",
+    "featured": true
+  },
+  {
+    "id": 2,
+    "slug": "neon-runners",
+    "name": "Neon Runners",
+    "category": "Action",
+    "rating": 4.6,
+    "size": "1.8GB",
+    "emoji": "⚔️",
+    "description": "Hızlı tempolu aksiyon oyunu. Reflekslerinizi test edin, neon parkurlarda yarışın.",
+    "featured": true
+  },
+  {
+    "id": 3,
+    "slug": "pixel-worlds",
+    "name": "Pixel Worlds",
+    "category": "Adventure",
+    "rating": 4.7,
+    "size": "3.2GB",
+    "emoji": "🗻",
+    "description": "Sonsuz dünyaları keşfedin. İnşa edin, keşfedin ve maceraya atılın.",
+    "featured": true
+  },
+  {
+    "id": 4,
+    "slug": "void-clash",
+    "name": "Void Clash",
+    "category": "Multiplayer",
+    "rating": 4.5,
+    "size": "4.1GB",
+    "emoji": "🎯",
+    "description": "Çok oyunculu savaş arenası. Takımınızla void'e hükmedin.",
+    "featured": false
+  },
+  {
+    "id": 5,
+    "slug": "echo-protocol",
+    "name": "Echo Protocol",
+    "category": "Puzzle",
+    "rating": 4.9,
+    "size": "800MB",
+    "emoji": "🧩",
+    "description": "Beyni zorlayan bulmaca oyunu. Echo protokolünü çözün, sırları açığa çıkarın.",
+    "featured": false
+  }
+]

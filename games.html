@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oyunlar — Pixware Studios</title>
+  <meta name="description" content="Pixware Studios oyun kataloğu — Cyber Quest, Neon Runners ve daha fazlası.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body data-page="games">
+  <div id="site-header"></div>
+  <main>
+    <div class="page-header container">
+      <h1>Oyunlarımız</h1>
+      <p>Launcher kütüphanenizde yer alan tüm yapımlar.</p>
+    </div>
+    <section class="section">
+      <div class="container" id="games-grid"></div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="modal-close" type="button" aria-label="Kapat">&times;</button>
+      <h2 id="modal-title"></h2>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+  <script src="js/config.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/games.js"></script>
+  <script>function onPageReady() { renderGamesGrid('games-grid'); }</script>
+</body>
+</html>

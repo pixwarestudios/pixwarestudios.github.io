@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixware Launcher — İndir</title>
+  <meta name="description" content="Pixware Studios Launcher — oyun kütüphanesi, mağaza ve arkadaş sistemi. Windows ve Linux.">
+  <meta property="og:title" content="Pixware Launcher">
+  <meta property="og:description" content="Oyunlarınızı tek yerden yönetin — Pixware Studios Launcher.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body data-page="launcher">
+  <div id="site-header"></div>
+  <main>
+    <div class="page-header container">
+      <h1>Pixware Launcher</h1>
+      <p>Oyunlarınızı tek yerden yönetin. Sürüm: <span id="launcher-version">1.0.0-beta</span></p>
+    </div>
+    <section class="section">
+      <div class="container">
+        <div class="download-panel">
+          <h2 class="section-title">İndir</h2>
+          <p style="color: var(--text-secondary); margin-bottom: 1rem;">Kurulum paketleri yakında. Şimdilik kaynak koddan çalıştırabilirsiniz.</p>
+          <div class="download-buttons">
+            <button id="download-windows" class="btn disabled" disabled>Windows (Yakında)</button>
+            <button id="download-linux" class="btn disabled" disabled>Linux (Yakında)</button>
+          </div>
+          <p style="margin-top: 1rem;"><a href="../PixwareLauncher" class="btn btn-accent">Kaynak Koddan Çalıştır →</a></p>
+        </div>
+        <div class="screenshot-placeholder">Launcher Arayüz Önizlemesi</div>
+        <h2 class="section-title" style="margin-top: 3rem;">Özellikler</h2>
+        <div class="feature-grid" style="margin-top: 1.5rem;">
+          <div class="feature-item"><span class="icon">🎮</span><h3>Oyun Kütüphanesi</h3><p>Tüm oyunlarınızı listeleyin, başlatın ve yönetin.</p></div>
+          <div class="feature-item"><span class="icon">🛍️</span><h3>Mağaza</h3><p>Yeni oyunları keşfedin ve satın alın.</p></div>
+          <div class="feature-item"><span class="icon">👥</span><h3>Arkadaşlar</h3><p>Çevrimiçi durum ve davet sistemi.</p></div>
+          <div class="feature-item"><span class="icon">⬇️</span><h3>İndirmeler</h3><p>İndirme hızı ve ilerleme takibi.</p></div>
+          <div class="feature-item"><span class="icon">⚙️</span><h3>Ayarlar</h3><p>Grafik, ses ve depolama yapılandırması.</p></div>
+          <div class="feature-item"><span class="icon">✨</span><h3>Neon Tema</h3><p>Mor-pembe-cyan neon arayüz.</p></div>
+        </div>
+        <h2 class="section-title" style="margin-top: 3rem;">Sistem Gereksinimleri</h2>
+        <ul class="req-list" id="launcher-requirements"></ul>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="modal-close" type="button" aria-label="Kapat">&times;</button>
+      <h2 id="modal-title"></h2>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+  <script src="js/config.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/launcher-page.js"></script>
+  <script>function onPageReady() { loadLauncherInfo(); }</script>
+</body>
+</html>

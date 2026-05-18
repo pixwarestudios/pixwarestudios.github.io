@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin — Pixware Studios</title>
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+  <div id="admin-login" class="admin-login">
+    <div class="admin-login-box">
+      <h1>Pixware Admin</h1>
+      <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.9rem;">Icerik yonetim paneli</p>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="admin-password">Sifre</label>
+          <input type="password" id="admin-password" required autocomplete="current-password">
+        </div>
+        <p id="login-error" class="form-error"></p>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Giris</button>
+      </form>
+      <p style="margin-top: 1.25rem; font-size: 0.8rem; color: var(--text-secondary);">Varsayilan sifre: <code>pixware2026</code> — config.js icinden degistirin.</p>
+    </div>
+  </div>
+
+  <div id="admin-app" class="admin-layout" hidden>
+    <aside class="admin-sidebar">
+      <p class="logo-text" style="padding: 0 0.75rem 1rem; font-size: 1.1rem;">PIXWARE ADMIN</p>
+      <h2>Icerik</h2>
+      <button type="button" class="admin-nav-btn active" data-panel="dashboard">Dashboard</button>
+      <button type="button" class="admin-nav-btn" data-panel="site">Site</button>
+      <button type="button" class="admin-nav-btn" data-panel="team">Ekip</button>
+      <button type="button" class="admin-nav-btn" data-panel="games">Oyunlar</button>
+      <button type="button" class="admin-nav-btn" data-panel="posts">Haberler</button>
+      <button type="button" class="admin-nav-btn" data-panel="jobs">Kariyer</button>
+      <h2>Yayin</h2>
+      <button type="button" class="admin-nav-btn" data-panel="github">GitHub</button>
+      <button type="button" class="admin-nav-btn" id="admin-logout" style="margin-top: 2rem; color: #ff6b6b;">Cikis</button>
+    </aside>
+    <main class="admin-main">
+      <div class="admin-header">
+        <p style="color: var(--text-secondary);">Pixware Studios icerik yonetimi</p>
+        <a href="index.html" class="btn btn-sm btn-accent" target="_blank">Siteyi ac</a>
+      </div>
+      <div id="panel-dashboard" class="admin-panel active"></div>
+      <div id="panel-site" class="admin-panel"></div>
+      <div id="panel-team" class="admin-panel"></div>
+      <div id="panel-games" class="admin-panel"></div>
+      <div id="panel-posts" class="admin-panel"></div>
+      <div id="panel-jobs" class="admin-panel"></div>
+      <div id="panel-github" class="admin-panel"></div>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="admin-modal">
+    <div class="modal" style="max-width: 560px;">
+      <button type="button" class="modal-close" id="admin-modal-close" aria-label="Kapat">&times;</button>
+      <div id="admin-modal-body"></div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    document.getElementById('admin-modal-close')?.addEventListener('click', () => {
+      document.getElementById('admin-modal').classList.remove('open');
+    });
+  </script>
+</body>
+</html>

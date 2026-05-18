@@ -1,0 +1,19 @@
+:root {
+  --neon-primary: #8B00FF;
+  --neon-secondary: #FF00FF;
+  --neon-accent: #00FFFF;
+  --bg-dark: #0a0a0a;
+  --bg-darker: #050505;
+  --bg-card: rgba(20, 10, 35, 0.85);
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --border-glow: rgba(139, 0, 255, 0.5);
+  --shadow-glow: 0 0 20px rgba(139, 0, 255, 0.4);
+  --shadow-glow-pink: 0 0 20px rgba(255, 0, 255, 0.3);
+  --header-height: 72px;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --transition: 0.25s ease;
+  --max-width: 1200px;
+  --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

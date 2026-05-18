@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kariyer — Pixware Studios</title>
+  <meta name="description" content="Pixware Studios iş ilanları ve staj programları.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body data-page="careers">
+  <div id="site-header"></div>
+  <main>
+    <div class="page-header container">
+      <h1>Kariyer</h1>
+      <p>Ekibimize katılın — oyun ve launcher geliştirmede birlikte üretelim.</p>
+    </div>
+    <section class="section">
+      <div class="container" id="jobs-list"></div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="modal-close" type="button" aria-label="Kapat">&times;</button>
+      <h2 id="modal-title"></h2>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+  <script src="js/config.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/careers.js"></script>
+  <script>function onPageReady() { renderJobs('jobs-list'); }</script>
+</body>
+</html>

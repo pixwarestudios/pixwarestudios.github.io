@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0-beta",
+  "status": "beta",
+  "downloads": {
+    "windows": null,
+    "linux": null
+  },
+  "sourcePath": "../PixwareLauncher",
+  "requirements": [
+    "Windows 10/11 veya Linux (64-bit)",
+    "Node.js 14+ (kaynak koddan çalıştırma)",
+    "4 GB RAM (önerilen 8 GB)",
+    "500 MB boş disk alanı",
+    "İnternet bağlantısı (indirme ve güncellemeler)"
+  ]
+}

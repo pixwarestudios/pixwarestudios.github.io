@@ -1,0 +1,24 @@
+{
+  "studio": {
+    "name": "Pixware Studios",
+    "tagline": "Neon dünyalarda unutulmaz oyun deneyimleri",
+    "founded": "2026",
+    "vision": [
+      "Pixware Studios, oyunculara unutulmaz deneyimler sunan bağımsız bir oyun stüdyosudur. Oyunlarımızı kendi launcher ekosistemimizle bir araya getiriyoruz.",
+      "Küçük ama tutkulu bir ekibiz — her piksel ve her satır kod neon tutkumuzla yazılıyor."
+    ]
+  },
+  "hero": {
+    "title": "Pixware Studios",
+    "subtitle": "Neon dünyalarda unutulmaz oyun deneyimleri yaratıyoruz. Oyunlarımızı tek launcher ile yönetin, keşfedin ve oynayın."
+  },
+  "social": {
+    "github": "https://github.com",
+    "discord": "",
+    "twitter": "",
+    "youtube": ""
+  },
+  "contact": {
+    "email": "info@pixwarestudios.com"
+  }
+}

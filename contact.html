@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İletişim — Pixware Studios</title>
+  <meta name="description" content="Pixware Studios ile iletişime geçin.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body data-page="contact">
+  <div id="site-header"></div>
+  <main>
+    <div class="page-header container">
+      <h1>İletişim</h1>
+      <p>Sorularınız, iş birlikleri veya başvurularınız için bize yazın.</p>
+    </div>
+    <section class="section">
+      <div class="container">
+        <div class="grid grid-2">
+          <div>
+            <h2 class="section-title">Bize Ulaşın</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">E-posta: <a href="mailto:info@pixwarestudios.com" style="color: var(--neon-accent);">info@pixwarestudios.com</a></p>
+            <form id="contact-form" novalidate>
+              <div class="form-group">
+                <label for="name">Ad Soyad</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">E-posta</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="subject">Konu</label>
+                <input type="text" id="subject" name="subject" required>
+              </div>
+              <div class="form-group">
+                <label for="message">Mesaj</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Gönder</button>
+              <p class="form-error" role="alert"></p>
+              <p class="form-success" hidden></p>
+            </form>
+          </div>
+          <div id="apply">
+            <h2 class="section-title">İş Başvurusu</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">Kariyer sayfasındaki pozisyonlara başvurmak için konu satırına pozisyon adını yazın.</p>
+            <div class="newsletter-box" style="text-align: left;">
+              <p style="color: var(--text-secondary); font-size: 0.9rem;">Örnek konu: "Başvuru — Oyun Geliştirici (Unity)"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="modal-close" type="button" aria-label="Kapat">&times;</button>
+      <h2 id="modal-title"></h2>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+  <script src="js/config.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/newsletter.js"></script>
+  <script>
+    function onPageReady() {
+      const form = document.getElementById('contact-form');
+      if (!form) return;
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const cfg = PIXWARE_CONFIG || {};
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const subject = form.subject.value.trim();
+        const message = form.message.value.trim();
+        const err = form.querySelector('.form-error');
+        const ok = form.querySelector('.form-success');
+        if (err) err.textContent = '';
+        if (ok) ok.hidden = true;
+        if (!name || !email || !subject || !message) {
+          if (err) err.textContent = 'Lütfen tüm alanları doldurun.';
+          return;
+        }
+        const body = encodeURIComponent('Ad: ' + name + '\nE-posta: ' + email + '\n\n' + message);
+        window.location.href = 'mailto:' + (cfg.email || 'info@pixwarestudios.com') + '?subject=' + encodeURIComponent(subject) + '&body=' + body;
+        if (ok) { ok.hidden = false; ok.textContent = 'E-posta istemciniz açılıyor...'; }
+      });
+    }
+  </script>
+</body>
+</html>

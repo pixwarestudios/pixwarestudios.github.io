@@ -1,0 +1,41 @@
+[
+  {
+    "id": "enes",
+    "name": "Enes",
+    "role": "Kurucu & Lead Developer",
+    "bio": "Oyun mekanikleri, launcher mimarisi ve stüdyo vizyonundan sorumlu. Unity ve Electron ile tam yığın geliştirme.",
+    "avatar": "👾",
+    "order": 1,
+    "social": {
+      "github": "",
+      "twitter": "",
+      "linkedin": ""
+    }
+  },
+  {
+    "id": "member-2",
+    "name": "Ekip Üyesi",
+    "role": "Oyun Tasarımcısı",
+    "bio": "Seviye tasarımı, oyun dengesi ve oyuncu deneyimi üzerine çalışıyor. Admin panelinden bilgileri güncelleyebilirsiniz.",
+    "avatar": "🎮",
+    "order": 2,
+    "social": {
+      "github": "",
+      "twitter": "",
+      "linkedin": ""
+    }
+  },
+  {
+    "id": "member-3",
+    "name": "Ekip Üyesi",
+    "role": "UI/UX & Web",
+    "bio": "Launcher arayüzü, stüdyo web sitesi ve görsel kimlik. Neon estetiğin koruyucusu.",
+    "avatar": "✨",
+    "order": 3,
+    "social": {
+      "github": "",
+      "twitter": "",
+      "linkedin": ""
+    }
+  }
+]

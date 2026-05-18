@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hakkımızda — Pixware Studios</title>
+  <meta name="description" content="Pixware Studios vizyonu, ekibi ve teknoloji yığını.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body data-page="about">
+  <div id="site-header"></div>
+  <main>
+    <div class="page-header container">
+      <h1>Hakkımızda</h1>
+      <p>Bağımsız oyun stüdyosu olarak neon dünyalarda hikâye anlatıyoruz.</p>
+    </div>
+    <section class="section">
+      <div class="container">
+        <div class="about-block">
+          <div>
+            <h2 class="section-title">Vizyonumuz</h2>
+            <div id="about-vision"></div>
+          </div>
+          <div class="screenshot-placeholder">Stüdyo</div>
+        </div>
+        <h2 class="section-title">Teknoloji</h2>
+        <div class="tech-badges">
+          <span class="tech-badge">Unity</span>
+          <span class="tech-badge">Electron</span>
+          <span class="tech-badge">Node.js</span>
+          <span class="tech-badge">Vanilla Web</span>
+        </div>
+        <h2 class="section-title" style="margin-top: 3rem;">Ekip</h2>
+        <p class="section-subtitle">Pixware Studios'u oluşturan insanlar.</p>
+        <div id="team-grid"></div>
+        <p style="margin-top: 2rem; color: var(--text-secondary); text-align: center;">
+          Ekibimize katılmak ister misiniz? <a href="careers.html" style="color: var(--neon-accent);">Kariyer sayfamıza</a> göz atın.
+        </p>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="modal-close" type="button" aria-label="Kapat">&times;</button>
+      <h2 id="modal-title"></h2>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+  <script src="js/config.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/team.js"></script>
+  <script>
+    function onPageReady() {
+      renderAboutContent();
+      renderTeamGrid('team-grid');
+    }
+  </script>
+</body>
+</html>

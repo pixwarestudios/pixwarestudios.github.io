@@ -1,0 +1,41 @@
+[
+  {
+    "id": "game-dev",
+    "title": "Oyun Geliştirici (Unity)",
+    "type": "Tam zamanlı",
+    "location": "Uzaktan / Hibrit",
+    "description": "Pixware oyunlarında gameplay, sistemler ve performans üzerinde çalışacak Unity geliştiricisi arıyoruz.",
+    "requirements": [
+      "Unity ve C# ile en az 2 yıl deneyim",
+      "2D/3D oyun mekanikleri geliştirme",
+      "Versiyon kontrolü (Git) bilgisi",
+      "Takım çalışmasına yatkınlık"
+    ]
+  },
+  {
+    "id": "ui-designer",
+    "title": "UI/UX Tasarımcı",
+    "type": "Tam zamanlı",
+    "location": "Uzaktan",
+    "description": "Launcher ve oyun arayüzlerinde neon estetiğimizi yansıtacak tasarımcı arıyoruz.",
+    "requirements": [
+      "Oyun UI portfolyosu",
+      "Figma veya benzeri araçlar",
+      "Responsive ve erişilebilir tasarım anlayışı",
+      "İngilizce okuma/yazma"
+    ]
+  },
+  {
+    "id": "intern-2026",
+    "title": "Yaz Stajyeri — Oyun Geliştirme",
+    "type": "Staj",
+    "location": "Uzaktan",
+    "description": "2026 yaz döneminde ekibimize katılacak stajyerler için program.",
+    "requirements": [
+      "Bilgisayar mühendisliği veya ilgili bölüm öğrencisi",
+      "Unity, web veya Electron ile en az bir proje",
+      "Öğrenmeye açık ve proaktif çalışma",
+      "Minimum 3 ay staj süresi"
+    ]
+  }
+]

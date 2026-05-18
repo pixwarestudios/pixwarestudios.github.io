@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixware Studios — Bağımsız Oyun Stüdyosu</title>
+  <meta name="description" content="Pixware Studios — neon temalı oyunlar ve Pixware Launcher. Oyunları keşfedin, launcher'ı indirin.">
+  <meta property="og:title" content="Pixware Studios">
+  <meta property="og:description" content="Bağımsız oyun stüdyosu ve oyun launcher ekosistemi.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body data-page="home">
+  <div id="site-header"></div>
+  <main>
+    <section class="hero">
+      <div class="container hero-content fade-in">
+        <h1>Pixware <span>Studios</span></h1>
+        <p>Neon dünyalarda unutulmaz oyun deneyimleri yaratıyoruz. Oyunlarımızı tek launcher ile yönetin, keşfedin ve oynayın.</p>
+        <div class="hero-actions">
+          <a href="launcher.html" class="btn btn-primary">Launcher İndir</a>
+          <a href="games.html" class="btn btn-accent">Oyunları Keşfet</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title fade-in">Öne Çıkan Oyunlar</h2>
+        <p class="section-subtitle fade-in">Launcher kütüphanenizde yer alan yapımlarımızdan bir seçki.</p>
+        <div id="featured-games"></div>
+        <p style="margin-top: 2rem; text-align: center;">
+          <a href="games.html" class="btn">Tüm Oyunlar</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="section" style="background: rgba(139, 0, 255, 0.05);">
+      <div class="container">
+        <div class="about-block">
+          <div class="fade-in">
+            <h2 class="section-title">Pixware Launcher</h2>
+            <p class="section-subtitle" style="margin-bottom: 1rem;">Oyun kütüphaneniz, mağaza, arkadaşlar ve indirmeler — hepsi mor neon temada tek uygulamada.</p>
+            <ul style="color: var(--text-secondary); margin-bottom: 1.5rem; padding-left: 1.25rem;">
+              <li>Oyun kütüphanesi ve mağaza</li>
+              <li>Arkadaş sistemi ve profil</li>
+              <li>İndirme yöneticisi</li>
+            </ul>
+            <a href="launcher.html" class="btn btn-primary">Launcher Hakkında</a>
+          </div>
+          <div class="screenshot-placeholder fade-in">Launcher Önizleme</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title fade-in">Son Haberler</h2>
+        <p class="section-subtitle fade-in">Stüdyodan güncellemeler ve duyurular.</p>
+        <div id="latest-news"></div>
+        <p style="margin-top: 2rem; text-align: center;">
+          <a href="news/index.html" class="btn">Tüm Haberler</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="newsletter-box fade-in">
+          <h2 class="section-title">Bültene Katılın</h2>
+          <p class="section-subtitle" style="margin-inline: auto;">Yeni oyunlar, güncellemeler ve beta davetleri için e-posta listemize kaydolun.</p>
+          <form id="newsletter-form-home" data-newsletter-form novalidate>
+            <input type="email" name="email" placeholder="E-posta adresiniz" required aria-label="E-posta">
+            <button type="submit" class="btn btn-primary">Abone Ol</button>
+            <p class="form-error" role="alert"></p>
+            <p class="form-success" hidden></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="modal-close" type="button" aria-label="Kapat">&times;</button>
+      <h2 id="modal-title"></h2>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/games.js"></script>
+  <script src="js/blog.js"></script>
+  <script src="js/newsletter.js"></script>
+  <script>
+    function onPageReady() {
+      renderGamesGrid('featured-games', { featuredOnly: true, limit: 3, showActions: true });
+      renderPostsList('latest-news', 3);
+      initNewsletterForm('newsletter-form-home');
+    }
+  </script>
+</body>
+</html>
