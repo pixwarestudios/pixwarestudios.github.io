@@ -1,11 +1,10 @@
 {
-  "version": "1.0.0-beta",
-  "status": "beta",
+  "version": "0.0.0",
+  "status": "yakinda!",
   "downloads": {
-    "windows": null,
-    "linux": null
+    "windows": "",
+    "linux": ""
   },
-  "sourcePath": "../PixwareLauncher",
   "requirements": [
     "Windows 10/11 veya Linux (64-bit)",
     "Node.js 14+ (kaynak koddan çalıştırma)",
