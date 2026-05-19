@@ -3,7 +3,9 @@
  * Varsayilan sifre: pixware2026 (config.js icinde degistirin)
  */
 const ADMIN_SESSION = 'pixware_admin_session';
+const ADMIN_USER = 'pixware_admin_user';
 const ADMIN_GH_SETTINGS = 'pixware_github_settings';
+const ADMINS_STORAGE = 'pixware_admins_list';
 const DATA_FILES = {
   games: 'data/games.json',
   posts: 'data/posts.json',
@@ -31,6 +33,27 @@ function isLoggedIn() {
   return sessionStorage.getItem(ADMIN_SESSION) === '1';
 }
 
+function getLoggedInUser() {
+  return sessionStorage.getItem(ADMIN_USER);
+}
+
+function loadAdmins() {
+  const stored = localStorage.getItem(ADMINS_STORAGE);
+  return stored ? JSON.parse(stored) : PIXWARE_CONFIG.admins;
+}
+
+function saveAdmins(admins) {
+  localStorage.setItem(ADMINS_STORAGE, JSON.stringify(admins));
+}
+
+function isFounder(adminId) {
+  return adminId === 'founder';
+}
+
+function canManageAdmins(adminId) {
+  return isFounder(adminId);
+}
+
 function showToast(msg, isError) {
   const old = document.querySelector('.admin-toast');
   if (old) old.remove();
@@ -42,11 +65,35 @@ function showToast(msg, isError) {
   setTimeout(() => el.remove(), 4000);
 }
 
-async function tryLogin(password) {
+async function tryLogin(password, asFounder = false) {
   const hash = await hashPassword(password);
-  const expected = PIXWARE_CONFIG.adminPasswordHash;
-  if (hash === expected) {
+  let adminId = null;
+  let role = null;
+
+  if (asFounder) {
+    if (hash === PIXWARE_CONFIG.founderPasswordHash) {
+      adminId = 'founder';
+      role = 'founder';
+    }
+  } else {
+    // Normal admin kontrolü
+    if (hash === PIXWARE_CONFIG.adminPasswordHash) {
+      adminId = 'admin1';
+      role = 'admin';
+    } else {
+      // Ek adminleri kontrol et
+      const admins = loadAdmins();
+      const found = admins.find(a => a.passwordHash === hash);
+      if (found) {
+        adminId = found.id;
+        role = found.role;
+      }
+    }
+  }
+
+  if (adminId) {
     sessionStorage.setItem(ADMIN_SESSION, '1');
+    sessionStorage.setItem(ADMIN_USER, adminId);
     return true;
   }
   return false;
@@ -54,6 +101,7 @@ async function tryLogin(password) {
 
 function logout() {
   sessionStorage.removeItem(ADMIN_SESSION);
+  sessionStorage.removeItem(ADMIN_USER);
   location.reload();
 }
 
@@ -193,6 +241,90 @@ function renderTeamList() {
   `;
   document.getElementById('add-member')?.addEventListener('click', () => openEditor('team', -1));
   bindListActions(el, 'team');
+}
+
+function renderAdminsPanel() {
+  const el = document.getElementById('panel-admins');
+  if (!el) return;
+  const user = getLoggedInUser();
+  if (!canManageAdmins(user)) {
+    el.innerHTML = '<p style="color: var(--text-secondary);">Bu panele erismek icin kurucu olanmaniz gerekir.</p>';
+    return;
+  }
+  const admins = loadAdmins();
+  const items = admins.map((a, i) => `
+    <div class="admin-list-item">
+      <span><strong>${esc(a.name)}</strong> — ${esc(a.role)} ${a.id === 'founder' ? '(Kurucu)' : ''}</span>
+      <span style="color:var(--text-secondary);font-size:0.85rem;">${esc(a.createdAt)}</span>
+      ${a.id !== 'founder' ? `<div class="admin-actions"><button type="button" class="btn btn-sm btn-danger" data-remove-admin="${esc(a.id)}">Sil</button></div>` : ''}
+    </div>`).join('');
+  el.innerHTML = `
+    <h2 class="section-title">Admin Yonetimi</h2>
+    <p class="admin-hint">Kurucu olarak yeni adminler ekleyip sil sileyebilirsiniz.</p>
+    <button type="button" class="btn btn-primary" id="add-admin">+ Admin Ekle</button>
+    <div class="admin-card" style="margin-top:1rem;">${items || '<p>Henuz kurucu baska admin eklememis.</p>'}</div>
+  `;
+  document.getElementById('add-admin')?.addEventListener('click', () => openAddAdminModal());
+  el.querySelectorAll('[data-remove-admin]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (!confirm('Bu admini silmek istediginize emin misiniz?')) return;
+      const adminId = btn.dataset.removeAdmin;
+      const updated = admins.filter(a => a.id !== adminId);
+      saveAdmins(updated);
+      renderAdminsPanel();
+      showToast('Admin silindi.');
+    });
+  });
+}
+
+function openAddAdminModal() {
+  const modal = document.getElementById('admin-modal');
+  const body = document.getElementById('admin-modal-body');
+  body.innerHTML = `
+    <h3>Yeni Admin Ekle</h3>
+    <div class="admin-form-grid">
+      <div class="form-group"><label>Admin Adi</label><input id="new-admin-name" placeholder="Ornek: Ali Yilmaz"></div>
+      <div class="form-group"><label>Sifre</label><input id="new-admin-pass" type="password" placeholder="Guclu bir sifre belirleyin"></div>
+      <div class="form-group"><label>Sifre Onayi</label><input id="new-admin-pass-confirm" type="password"></div>
+    </div>
+    <div style="margin-top:1rem;display:flex;gap:0.5rem;">
+      <button type="button" class="btn btn-primary" id="save-new-admin">Ekle</button>
+      <button type="button" class="btn" id="cancel-admin">Iptal</button>
+    </div>
+  `;
+  modal.classList.add('open');
+  document.getElementById('cancel-admin').onclick = () => modal.classList.remove('open');
+  document.getElementById('save-new-admin').onclick = async () => {
+    const name = document.getElementById('new-admin-name').value.trim();
+    const pass = document.getElementById('new-admin-pass').value;
+    const passConfirm = document.getElementById('new-admin-pass-confirm').value;
+    if (!name) {
+      showToast('Ad gerekli', true);
+      return;
+    }
+    if (!pass || pass.length < 6) {
+      showToast('Sifre en az 6 karakter olmali', true);
+      return;
+    }
+    if (pass !== passConfirm) {
+      showToast('Sifreler eslesmiyor', true);
+      return;
+    }
+    const hash = await hashPassword(pass);
+    const admins = loadAdmins();
+    const newAdmin = {
+      id: 'admin-' + Date.now(),
+      name,
+      role: 'admin',
+      passwordHash: hash,
+      createdAt: new Date().toISOString().slice(0, 10)
+    };
+    admins.push(newAdmin);
+    saveAdmins(admins);
+    modal.classList.remove('open');
+    renderAdminsPanel();
+    showToast('Yeni admin eklendi: ' + name);
+  };
 }
 
 function renderSitePanel() {
@@ -412,6 +544,7 @@ function renderAllPanels() {
   renderJobsList();
   renderTeamList();
   renderSitePanel();
+  renderAdminsPanel();
   renderGithubPanel();
 }
 
@@ -500,8 +633,10 @@ async function publishToGithub(e) {
 }
 
 function initAdminApp() {
-  document.getElementById('admin-app').hidden = false;
-  document.getElementById('admin-login').hidden = true;
+  const loginEl = document.getElementById('admin-login');
+  const appEl = document.getElementById('admin-app');
+  loginEl.classList.remove('admin-login-visible');
+  appEl.hidden = false;
   document.querySelectorAll('.admin-nav-btn').forEach((btn) => {
     btn.addEventListener('click', () => showPanel(btn.dataset.panel));
   });
@@ -512,6 +647,17 @@ function initAdminApp() {
 
 async function init() {
   const loginForm = document.getElementById('login-form');
+  const founderToggle = document.getElementById('founder-toggle');
+  let isFounderMode = false;
+  
+  if (founderToggle) {
+    founderToggle.addEventListener('click', () => {
+      isFounderMode = !isFounderMode;
+      founderToggle.textContent = isFounderMode ? 'Normal Girise Geri Don' : 'Kurucu Girisini Ac';
+      document.getElementById('admin-password').focus();
+    });
+  }
+  
   if (isLoggedIn()) {
     try {
       await loadAllData();
@@ -526,12 +672,12 @@ async function init() {
     e.preventDefault();
     const pw = document.getElementById('admin-password').value;
     const err = document.getElementById('login-error');
-    if (await tryLogin(pw)) {
+    if (await tryLogin(pw, isFounderMode)) {
       err.textContent = '';
       await loadAllData();
       initAdminApp();
     } else {
-      err.textContent = 'Yanlis sifre';
+      err.textContent = isFounderMode ? 'Yanlis kurucu sifresi' : 'Yanlis sifre';
     }
   });
 }

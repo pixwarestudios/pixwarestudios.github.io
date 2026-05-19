@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="css/admin.css">
 </head>
 <body class="admin-body">
-  <div id="admin-login" class="admin-login">
+  <div id="admin-login" class="admin-login admin-login-visible">
     <div class="admin-login-box">
       <h1>Pixware Admin</h1>
       <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.9rem;">Icerik yonetim paneli</p>
@@ -24,7 +24,8 @@
         <p id="login-error" class="form-error"></p>
         <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Giris</button>
       </form>
-      <p style="margin-top: 1.25rem; font-size: 0.8rem; color: var(--text-secondary);">Varsayilan sifre: <code>pixware2026</code> — config.js icinden degistirin.</p>
+      <p style="margin-top: 1.25rem; font-size: 0.8rem; color: var(--text-secondary);">Varsayilan sifre: <code>pixware2026</code> — Kurucu sifresi: <code>founder2026</code></p>
+      <button type="button" id="founder-toggle" style="background: none; border: none; color: var(--neon-accent); cursor: pointer; font-size: 0.75rem; margin-top: 1rem; text-decoration: underline;">Kurucu Girisini Ac</button>
     </div>
   </div>
 
@@ -38,6 +39,8 @@
       <button type="button" class="admin-nav-btn" data-panel="games">Oyunlar</button>
       <button type="button" class="admin-nav-btn" data-panel="posts">Haberler</button>
       <button type="button" class="admin-nav-btn" data-panel="jobs">Kariyer</button>
+      <h2>Guvenlik</h2>
+      <button type="button" class="admin-nav-btn" data-panel="admins">Admin Yonetimi</button>
       <h2>Yayin</h2>
       <button type="button" class="admin-nav-btn" data-panel="github">GitHub</button>
       <button type="button" class="admin-nav-btn" id="admin-logout" style="margin-top: 2rem; color: #ff6b6b;">Cikis</button>
@@ -53,6 +56,7 @@
       <div id="panel-games" class="admin-panel"></div>
       <div id="panel-posts" class="admin-panel"></div>
       <div id="panel-jobs" class="admin-panel"></div>
+      <div id="panel-admins" class="admin-panel"></div>
       <div id="panel-github" class="admin-panel"></div>
     </main>
   </div>
