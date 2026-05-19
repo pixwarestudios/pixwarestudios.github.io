@@ -1,52 +1,38 @@
 [
   {
-    "slug": "pixware-launcher-beta",
-    "title": { "tr": "Pixware Launcher Beta Yayında", "en": "Pixware Launcher Beta Is Live" },
-    "date": "2026-05-10",
-    "excerpt": { "tr": "Oyun kütüphanenizi tek yerden yönetin — mor neon temalı launcher'ımız beta sürümüyle kullanıma hazır.", "en": "Manage your game library in one place — our neon-themed launcher is available in beta." },
-    "category": "Launcher",
-    "author": "Pixware Haberleri",
-    "body": { "tr": "<p>Pixware Studios Launcher'ın ilk beta sürümünü duyurmaktan heyecan duyuyoruz. Oyun kütüphanenizi, mağazayı ve arkadaş listenizi tek bir masaüstü uygulamasında bir araya getirdik.</p><h2>Yeni özellikler</h2><p>Beta sürümünde oyun kütüphanesi, mağaza vitrini, indirme yöneticisi ve arkadaş sistemi yer alıyor. Mor neon tema launcher'ın her köşesinde hissediliyor.</p><p>Kaynak koddan çalıştırmak için launcher sayfamızdaki kurulum talimatlarına göz atın. Yakında Windows ve Linux için hazır kurulum paketleri de gelecek.</p>",
-      "en": "<p>We\u2019re excited to announce the first beta of the Pixware Studios Launcher. Manage your game library, store and friends from a single desktop app.</p><h2>What\u2019s new</h2><p>The beta includes the library, store front, download manager and friends system. The neon purple theme runs through the UI.</p><p>See the launcher page for instructions to run from source. Installer packages for Windows and Linux coming soon.</p>" }
-  },
-  {
-    "slug": "cyber-quest-guncelleme",
-    "title": { "tr": "Cyber Quest — Neon District Güncellemesi", "en": "Cyber Quest — Neon District Update" },
-    "date": "2026-04-22",
-    "excerpt": { "tr": "Yeni bölge, yeni görevler ve performans iyileştirmeleri Cyber Quest'e geliyor.", "en": "A new region, new quests and performance improvements are coming to Cyber Quest." },
-    "category": "Game Update",
-    "author": "Teknik Ekip",
-    "body": { "tr": "<p>Neon District güncellemesi Cyber Quest dünyasını genişletiyor. Üç yeni görev hattı, iki boss ve geliştirilmiş ışıklandırma sistemi bu yamada.</p><h2>Performans</h2><p>Orta seviye donanımlarda %15'e varan FPS artışı sağladık. Launcher üzerinden güncellemeyi otomatik alabileceksiniz.</p>",
-      "en": "<p>The Neon District update expands the world of Cyber Quest. It includes three new questlines, two bosses and an improved lighting system.</p><h2>Performance</h2><p>We\u2019ve improved FPS by up to 15% on mid-range hardware. The launcher will deliver the update automatically." }
-  },
-  {
     "slug": "stüdyo-kurulus",
-    "title": { "tr": "Pixware Studios Resmen Kuruldu", "en": "Pixware Studios Officially Founded" },
-    "date": "2026-03-01",
-    "excerpt": { "tr": "Bağımsız oyun geliştirme yolculuğumuza başlıyoruz. Vizyonumuz: neon, hikaye ve topluluk.", "en": "We\u2019re starting our indie game development journey. Our vision: neon, narrative and community." },
+    "title": {
+      "tr": "Pixware Studios Resmen Kuruldu",
+      "en": "Pixware Studios Officially Founded"
+    },
+    "date": "2026-05-19",
     "category": "Duyuru",
     "author": "Kurucu",
-    "body": { "tr": "<p>Pixware Studios, bağımsız oyun geliştirmeye tutkuyla bağlı küçük bir ekip olarak kuruldu. Unity ve Electron ile hem oyun hem de launcher ekosistemi inşa ediyoruz.</p><p>Bizi takip etmeye devam edin — ilk oyunlarımız ve launcher yol haritamız hakkında düzenli haberler paylaşacağız.</p>",
-      "en": "<p>Pixware Studios was founded as a small, passionate indie game team. We build games and a launcher ecosystem using Unity and Electron.</p><p>Follow us for regular updates on our first games and the launcher roadmap." }
-  },
-  {
-    "slug": "void-clash-alfa",
-    "title": { "tr": "Void Clash Alfa Testi Başlıyor", "en": "Void Clash Closed Alpha Begins" },
-    "date": "2026-05-15",
-    "excerpt": { "tr": "Çok oyunculu arena oyunumuzun kapalı alfa testine davetlisiniz.", "en": "You are invited to the closed alpha test of our multiplayer arena game." },
-    "category": "Etkinlik",
-    "author": "Topluluk",
-    "body": { "tr": "<p>Void Clash'in kapalı alfası launcher üzerinden erişilebilir olacak. 4v4 arena modu ve temel eşleştirme sistemi test edilecek.</p><p>Alfa testine katılmak için iletişim formundan başvurabilirsiniz.</p>",
-      "en": "<p>The closed alpha for Void Clash will be accessible via the launcher. We\u2019ll test the 4v4 arena mode and basic matchmaking.</p><p>Apply via the contact form to join the alpha.</p>" }
+    "excerpt": {
+      "tr": "Bağımsız oyun geliştirme yolculuğumuza başlıyoruz. Vizyonumuz: neon, hikaye ve topluluk.",
+      "en": "We’re starting our indie game development journey. Our vision: neon, narrative and community."
+    },
+    "body": {
+      "tr": "<p>Pixware Studios, bağımsız oyun geliştirmeye tutkuyla bağlı küçük bir ekip olarak kuruldu. Unity ve Electron ile hem oyun hem de launcher ekosistemi inşa ediyoruz.</p><p>Bizi takip etmeye devam edin — ilk oyunlarımız ve launcher yol haritamız hakkında düzenli haberler paylaşacağız.</p>",
+      "en": "<p>Pixware Studios was founded as a small, passionate indie game team. We build games and a launcher ecosystem using Unity and Electron.</p><p>Follow us for regular updates on our first games and the launcher roadmap."
+    }
   },
   {
     "slug": "kariyer-staj",
-    "title": { "tr": "Yaz Staj Programı 2026", "en": "Summer Internship Program 2026" },
-    "date": "2026-05-01",
-    "excerpt": { "tr": "Oyun geliştirme ve UI/UX alanında stajyer arıyoruz.", "en": "We\u2019re hiring interns for game development and UI/UX." },
+    "title": {
+      "tr": "Yaz Staj Programı 2026",
+      "en": "Summer Internship Program 2026"
+    },
+    "date": "2026-05-19",
     "category": "Kariyer",
     "author": "İK Ekibi",
-    "body": { "tr": "<p>2026 yaz staj programımız açıldı. Unity, web veya Electron deneyimi olan öğrencileri ekibimize katılmaya davet ediyoruz.</p><p>Detaylar kariyer sayfamızda.</p>",
-      "en": "<p>Our Summer 2026 internship program is open. We invite students with Unity, web or Electron experience to join us.</p><p>See the careers page for details.</p>" }
+    "excerpt": {
+      "tr": "Oyun geliştirme ve UI/UX alanında stajyer arıyoruz.",
+      "en": "We’re hiring interns for game development and UI/UX."
+    },
+    "body": {
+      "tr": "<p>2026 yaz staj programımız açıldı. Unity, web veya Electron deneyimi olan öğrencileri ekibimize katılmaya davet ediyoruz.</p><p>Detaylar kariyer sayfamızda.</p>",
+      "en": "<p>Our Summer 2026 internship program is open. We invite students with Unity, web or Electron experience to join us.</p><p>See the careers page for details.</p>"
+    }
   }
 ]
