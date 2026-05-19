@@ -9,8 +9,14 @@
     ]
   },
   "hero": {
-    "title": { "tr": "Pixware Studios", "en": "Pixware Studios" },
-    "subtitle": { "tr": "Neon dünyalarda unutulmaz oyun deneyimleri yaratıyoruz. Oyunlarımızı tek launcher ile yönetin, keşfedin ve oynayın.", "en": "Creating unforgettable game experiences in neon worlds. Manage, discover and play with our launcher." }
+    "title": {
+      "tr": "Pixware Studios",
+      "en": "Pixware Studios"
+    },
+    "subtitle": {
+      "tr": "Neon dünyalarda unutulmaz oyun deneyimleri yaratıyoruz. Oyunlarımızı tek launcher ile yönetin, keşfedin ve oynayın.",
+      "en": "Creating unforgettable game experiences in neon worlds. Manage, discover and play with our launcher."
+    }
   },
   "social": {
     "github": "https://github.com",
