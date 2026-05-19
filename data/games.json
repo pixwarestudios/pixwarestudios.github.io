@@ -1,17 +1,17 @@
 [
   {
     "id": 1,
-    "slug": "stratcher",
+    "slug": "strarcatcher",
     "name": {
-      "tr": "stratcher",
-      "en": "stratcher"
+      "tr": "strarcatcher",
+      "en": "strarcatcher"
     },
     "category": "Platformer",
     "imageUrl": "/assets/games/oyun1.png",
     "emoji": "🚀",
     "rating": 4.5,
     "size": "15 MB",
-    "featured": false,
+    "featured": true,
     "description": {
       "tr": "Bu uzay platformunda yıldızları toplayın!",
       "en": "Collect stars on this space platformer!"
