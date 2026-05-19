@@ -1,31 +1,21 @@
 [
   {
-    "id": 4,
-    "slug": "void-clash",
-    "name": { "tr": "Void Clash", "en": "Void Clash" },
-    "category": "Multiplayer",
+    "id": 1,
+    "slug": "stratcher",
+    "name": {
+      "tr": "stratcher",
+      "en": "stratcher"
+    },
+    "category": "Platformer",
+    "imageUrl": "/assets/games/oyun1.png",
+    "emoji": "🚀",
     "rating": 4.5,
-    "size": "4.1GB",
-    "emoji": "🎯",
-    "description": { "tr": "Çok oyunculu savaş arenası. Takımınızla void'e hükmedin.", "en": "A team-based multiplayer arena. Dominate the void with your squad." },
+    "size": "15 MB",
     "featured": false,
-    "screenshots": [
-      "assets/screenshots/void-clash-1.png",
-      "assets/screenshots/void-clash-2.png"
-    ]
-  },
-  {
-    "id": 5,
-    "slug": "echo-protocol",
-    "name": { "tr": "Echo Protocol", "en": "Echo Protocol" },
-    "category": "Puzzle",
-    "rating": 4.9,
-    "size": "800MB",
-    "emoji": "🧩",
-    "description": { "tr": "Beyni zorlayan bulmaca oyunu. Echo protokolünü çözün, sırları açığa çıkarın.", "en": "A challenging puzzle experience. Decode the Echo Protocol and reveal secrets." },
-    "featured": false,
-    "screenshots": [
-      "assets/screenshots/echo-protocol-1.png"
-    ]
+    "description": {
+      "tr": "Bu uzay platformunda yıldızları toplayın!",
+      "en": "Collect stars on this space platformer!"
+    },
+    "screenshots": []
   }
 ]
