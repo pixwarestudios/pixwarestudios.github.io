@@ -158,4 +158,40 @@ main {
   .section {
     padding: 3.5rem 0;
   }
+
+  .hero {
+    padding: 3rem 0;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero p {
+    margin-inline: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero::before,
+  .hero::after {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 2.5rem 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
 }
