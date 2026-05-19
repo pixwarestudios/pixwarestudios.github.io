@@ -6,8 +6,8 @@ const PIXWARE_CONFIG = {
   launcherRepo: '../PixwareLauncher',
   useMailtoFallback: true,
   // Kurucu sifresi SHA-256
-  // Bu kurucu sifresi: akdogan2526pixware
-  founderPasswordHash: '54e863c88dcdf9bdc1ec2056a41457b49f362e21c716e3451079c119c44feb1a',
+  // Bu kurucu sifresi: akdogan25e26pixware
+  founderPasswordHash: '9e47ddef92e24ef4320f77653b493f6348aa11634ad1bd8f040d81917f41129d',
   // Admin listesi — kurucu yeni adminler ekleyebilir
   admins: [
     { id: 'founder', name: 'Kurucu', role: 'founder', createdAt: '2026-05-19' }

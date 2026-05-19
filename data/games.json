@@ -2,23 +2,30 @@
   {
     "id": 4,
     "slug": "void-clash",
-    "name": "Void Clash",
+    "name": { "tr": "Void Clash", "en": "Void Clash" },
     "category": "Multiplayer",
     "rating": 4.5,
     "size": "4.1GB",
     "emoji": "🎯",
-    "description": "Çok oyunculu savaş arenası. Takımınızla void'e hükmedin.",
-    "featured": false
+    "description": { "tr": "Çok oyunculu savaş arenası. Takımınızla void'e hükmedin.", "en": "A team-based multiplayer arena. Dominate the void with your squad." },
+    "featured": false,
+    "screenshots": [
+      "assets/screenshots/void-clash-1.png",
+      "assets/screenshots/void-clash-2.png"
+    ]
   },
   {
     "id": 5,
     "slug": "echo-protocol",
-    "name": "Echo Protocol",
+    "name": { "tr": "Echo Protocol", "en": "Echo Protocol" },
     "category": "Puzzle",
     "rating": 4.9,
     "size": "800MB",
     "emoji": "🧩",
-    "description": "Beyni zorlayan bulmaca oyunu. Echo protokolünü çözün, sırları açığa çıkarın.",
-    "featured": false
+    "description": { "tr": "Beyni zorlayan bulmaca oyunu. Echo protokolünü çözün, sırları açığa çıkarın.", "en": "A challenging puzzle experience. Decode the Echo Protocol and reveal secrets." },
+    "featured": false,
+    "screenshots": [
+      "assets/screenshots/echo-protocol-1.png"
+    ]
   }
 ]

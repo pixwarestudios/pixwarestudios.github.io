@@ -19,16 +19,16 @@ python3 -m http.server 8080
 | Alan | Aciklama |
 |------|----------|
 | URL | `/admin.html` |
-| Varsayilan sifre | `pixware2026` |
-| Sifre degistirme | `js/config.js` → `adminPasswordHash` |
+| Varsayilan sifre | `akdogan2526pixware` |
+| Sifre degistirme | `js/config.js` → `founderPasswordHash` |
 
-Yeni sifre hash'i (tarayici konsolu, admin sayfasindayken):
+Yeni founder sifresi hash'i (tarayici konsolunda, admin sayfasindayken):
 
 ```js
-hashPassword('yeni-sifreniz').then(console.log)
+hashPassword('yeni-kurucu-sifresi').then(console.log)
 ```
 
-Cikan degeri `adminPasswordHash` alanina yapistirin.
+Cikan degeri `founderPasswordHash` alanina yapistirin.
 
 ### Admin ozellikleri
 

@@ -19,13 +19,18 @@ function postLink(slug, base) {
 }
 
 function postCardHtml(post, base) {
+  const lang = (window.i18n && window.i18n.getLang) ? window.i18n.getLang() : 'tr';
+  const title = (post.title && typeof post.title === 'object') ? (post.title[lang] || post.title.tr || post.title.en) : post.title;
+  const excerpt = (post.excerpt && typeof post.excerpt === 'object') ? (post.excerpt[lang] || post.excerpt.tr || post.excerpt.en) : post.excerpt;
+  const author = post.author || 'Pixware';
   return `
     <article class="card post-card fade-in">
       <div class="card-body">
-        <div class="card-meta"><span>${formatDate(post.date)}</span></div>
-        <h3 class="card-title">${post.title}</h3>
-        <p class="card-text">${post.excerpt}</p>
-        <a href="${postLink(post.slug, base)}" class="read-more">Devamını oku →</a>
+        <div class="card-meta"><span>${formatDate(post.date)}</span> • <span>${post.category || 'Genel'}</span></div>
+        <h3 class="card-title">${title}</h3>
+        <p class="card-subtitle">${author}</p>
+        <p class="card-text">${excerpt}</p>
+        <a href="${postLink(post.slug, base)}" class="read-more">${(lang==='en') ? 'Read more →' : 'Devamını oku →'}</a>
       </div>
     </article>
   `;
@@ -56,13 +61,17 @@ async function renderPostDetail() {
     container.innerHTML = '<p>Haber bulunamadı.</p>';
     return;
   }
-  document.title = `${post.title} — Pixware Studios`;
+  const lang = (window.i18n && window.i18n.getLang) ? window.i18n.getLang() : 'tr';
+  const title = (post.title && typeof post.title === 'object') ? (post.title[lang] || post.title.tr || post.title.en) : post.title;
+  const body = (post.body && typeof post.body === 'object') ? (post.body[lang] || post.body.tr || post.body.en) : post.body;
+  document.title = `${title} — Pixware Studios`;
   container.innerHTML = `
     <article class="post-article fade-in visible">
-      <p class="post-date">${formatDate(post.date)}</p>
-      <h1>${post.title}</h1>
-      <div class="post-body">${post.body}</div>
-      <p style="margin-top: 2rem;"><a href="index.html" class="btn">← Tüm haberler</a></p>
+      <p class="post-date">${formatDate(post.date)} • ${post.category || 'Genel'}</p>
+      <h1>${title}</h1>
+      <p class="post-subtitle">${(lang==='en') ? 'Author:' : 'Yazar:'} ${post.author || 'Pixware'}</p>
+      <div class="post-body">${body}</div>
+      <p style="margin-top: 2rem;"><a href="index.html" class="btn">← ${(lang==='en') ? 'All news' : 'Tüm haberler'}</a></p>
     </article>
   `;
 }

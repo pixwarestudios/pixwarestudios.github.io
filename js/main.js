@@ -87,8 +87,22 @@ window.openModal = openModal;
 window.closeModal = closeModal;
 
 async function initApp() {
+  // Dynamically load i18n helper (optional) and initialize
+  await new Promise((resolve) => {
+    if (window.i18n) { resolve(); return; }
+    const s = document.createElement('script');
+    const base = getBasePath();
+    s.src = base + 'js/i18n.js';
+    s.onload = () => resolve();
+    s.onerror = () => resolve();
+    document.head.appendChild(s);
+  });
+  if (window.i18n && typeof window.i18n.init === 'function') window.i18n.init();
+  // Load layout after i18n is ready so lang switcher works
   if (typeof injectLayout === 'function') {
     await injectLayout();
+    // Re-init i18n after partial injection so lang switcher buttons work
+    if (window.i18n && typeof window.i18n.init === 'function') window.i18n.init();
   }
   initMobileNav();
   setActiveNav();

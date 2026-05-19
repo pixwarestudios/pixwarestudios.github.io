@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Oyunlar — Pixware Studios</title>
   <meta name="description" content="Pixware Studios oyun kataloğu — Cyber Quest, Neon Runners ve daha fazlası.">
-  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/logo.png" type="image/png">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
@@ -18,7 +18,15 @@
       <p>Launcher kütüphanenizde yer alan tüm yapımlar.</p>
     </div>
     <section class="section">
-      <div class="container" id="games-grid"></div>
+      <div class="container">
+        <div class="games-filter-bar">
+          <input id="game-search" type="search" placeholder="Oyun ara...">
+          <select id="game-category-filter">
+            <option value="">Tüm kategoriler</option>
+          </select>
+        </div>
+        <div id="games-grid"></div>
+      </div>
     </section>
   </main>
   <div id="site-footer"></div>

@@ -1,11 +1,12 @@
 /**
  * Pixware Studios Admin Panel
- * Varsayilan sifre: pixware2026 (config.js icinde degistirin)
+ * Sadece kurucu ve eklenmis adminler giris yapabilir.
  */
 const ADMIN_SESSION = 'pixware_admin_session';
 const ADMIN_USER = 'pixware_admin_user';
 const ADMIN_GH_SETTINGS = 'pixware_github_settings';
 const ADMINS_STORAGE = 'pixware_admins_list';
+const DEPRECATED_ADMIN_PASSWORD_HASH = '9e47ddef92e24ef4320f77653b493f6348aa11634ad1bd8f040d81917f41129d';
 const DATA_FILES = {
   games: 'data/games.json',
   posts: 'data/posts.json',
@@ -171,7 +172,7 @@ function renderGamesList() {
   if (!el) return;
   const items = adminState.games.map((g, i) => `
     <div class="admin-list-item">
-      <span>${esc(g.emoji || '')} <strong>${esc(g.name)}</strong> — ${esc(g.category)}</span>
+      ${(() => { const n = (g.name && typeof g.name==='object') ? (g.name.tr||g.name.en) : g.name; return `<span>${esc(g.emoji || '')} <strong>${esc(n)}</strong> — ${esc(g.category)}</span>` })()}
       ${listActions('games', i)}
     </div>`).join('');
   el.innerHTML = `
@@ -188,7 +189,7 @@ function renderPostsList() {
   if (!el) return;
   const items = adminState.posts.map((p, i) => `
     <div class="admin-list-item">
-      <span><strong>${esc(p.title)}</strong><br><small style="color:var(--text-secondary)">${esc(p.date)}</small></span>
+      ${(() => { const t = (p.title && typeof p.title==='object') ? (p.title.tr||p.title.en) : p.title; return `<span><strong>${esc(t)}</strong><br><small style="color:var(--text-secondary)">${esc(p.date)}</small></span>` })()}
       ${listActions('posts', i)}
     </div>`).join('');
   el.innerHTML = `
@@ -323,19 +324,33 @@ function renderSitePanel() {
   if (!el) return;
   const s = adminState.site;
   const vision = (s.studio?.vision || []).join('\n\n');
+  const studioNameTr = (s.studio && s.studio.name && typeof s.studio.name === 'object') ? esc(s.studio.name.tr || '') : esc(s.studio?.name || '');
+  const studioNameEn = (s.studio && s.studio.name && typeof s.studio.name === 'object') ? esc(s.studio.name.en || '') : '';
+  const heroSubtitleTr = (s.hero && s.hero.subtitle && typeof s.hero.subtitle === 'object') ? esc(s.hero.subtitle.tr || '') : esc(s.hero?.subtitle || '');
+  const heroSubtitleEn = (s.hero && s.hero.subtitle && typeof s.hero.subtitle === 'object') ? esc(s.hero.subtitle.en || '') : '';
   el.innerHTML = `
     <h2 class="section-title">Site ayarlari</h2>
     <form id="site-form" class="admin-form-grid">
-      <div class="form-group"><label>Stüdyo adi</label><input name="studioName" value="${esc(s.studio?.name || '')}"></div>
-      <div class="form-group"><label>Slogan</label><input name="tagline" value="${esc(s.studio?.tagline || '')}"></div>
+      <div class="form-group"><label>Stüdyo adi (TR)</label><input name="studioNameTr" value="${studioNameTr}"></div>
+      <div class="form-group"><label>Stüdyo adi (EN)</label><input name="studioNameEn" value="${studioNameEn}"></div>
+      <div class="form-group"><label>Slogan (TR)</label><input name="taglineTr" value="${heroSubtitleTr}"></div>
+      <div class="form-group"><label>Slogan (EN)</label><input name="taglineEn" value="${heroSubtitleEn}"></div>
       <div class="form-group"><label>Kurulus yili</label><input name="founded" value="${esc(s.studio?.founded || '')}"></div>
       <div class="form-group"><label>E-posta</label><input name="email" value="${esc(s.contact?.email || '')}"></div>
-      <div class="form-group"><label>Hero alt baslik</label><textarea name="heroSubtitle" rows="3">${esc(s.hero?.subtitle || '')}</textarea></div>
+      <div class="form-group"><label>Hero alt baslik (TR)</label><textarea name="heroSubtitleTr" rows="3">${heroSubtitleTr}</textarea></div>
+      <div class="form-group"><label>Hero alt baslik (EN)</label><textarea name="heroSubtitleEn" rows="3">${heroSubtitleEn}</textarea></div>
       <div class="form-group"><label>Vizyon (paragraflar, bos satirla ayirin)</label><textarea name="vision" rows="6">${esc(vision)}</textarea></div>
-      <div class="form-group"><label>GitHub URL</label><input name="github" value="${esc(s.social?.github || '')}"></div>
-      <div class="form-group"><label>Discord URL</label><input name="discord" value="${esc(s.social?.discord || '')}"></div>
-      <div class="form-group"><label>Twitter URL</label><input name="twitter" value="${esc(s.social?.twitter || '')}"></div>
-      <button type="submit" class="btn btn-primary">Kaydet</button>
+        <div class="form-group"><label>Newsletter sağlayıcı (ornek: formspree veya mailto)</label><input name="newsProvider" value="${esc((s.newsletter && s.newsletter.provider) || (PIXWARE_CONFIG.formspreeNewsletter ? 'formspree' : 'mailto'))}"></div>
+        <div class="form-group"><label>Newsletter endpoint / Formspree ID</label><input name="newsEndpoint" value="${esc(s.newsletter?.endpoint || PIXWARE_CONFIG.formspreeNewsletter || '')}" placeholder="formspree ID veya tam URL"></div>
+        <div class="form-group"><label>Contact form endpoint (Formspree ID veya URL)</label><input name="contactEndpoint" value="${esc(s.contact?.formEndpoint || PIXWARE_CONFIG.formspreeContact || '')}" placeholder="formspree ID veya tam URL"></div>
+        <div class="form-group"><label>GitHub URL</label><input name="github" value="${esc(s.social?.github || '')}"></div>
+        <div class="form-group"><label>Discord URL</label><input name="discord" value="${esc(s.social?.discord || '')}"></div>
+        <div class="form-group"><label>Twitter URL</label><input name="twitter" value="${esc(s.social?.twitter || '')}"></div>
+        <div class="form-group"><label><input type="checkbox" id="site-auto-push"> Degisiklikleri otomatik GitHub'a yayinla</label></div>
+        <div style="display:flex;gap:0.5rem;align-items:center;">
+          <button type="submit" class="btn btn-primary">Kaydet</button>
+          <button type="button" class="btn" id="publish-site">GitHub'a Yayinle</button>
+        </div>
     </form>
   `;
   document.getElementById('site-form').addEventListener('submit', (e) => {
@@ -344,14 +359,14 @@ function renderSitePanel() {
     const visionText = f.vision.value.trim();
     adminState.site = {
       studio: {
-        name: f.studioName.value.trim(),
-        tagline: f.tagline.value.trim(),
+        name: { tr: f.studioNameTr.value.trim(), en: f.studioNameEn.value.trim() },
+        tagline: '',
         founded: f.founded.value.trim(),
         vision: visionText ? visionText.split(/\n\n+/).map((p) => p.trim()).filter(Boolean) : []
       },
       hero: {
-        title: 'Pixware Studios',
-        subtitle: f.heroSubtitle.value.trim()
+        title: { tr: 'Pixware Studios', en: 'Pixware Studios' },
+        subtitle: { tr: f.heroSubtitleTr.value.trim(), en: f.heroSubtitleEn.value.trim() }
       },
       social: {
         github: f.github.value.trim(),
@@ -359,9 +374,63 @@ function renderSitePanel() {
         twitter: f.twitter.value.trim(),
         youtube: adminState.site.social?.youtube || ''
       },
-      contact: { email: f.email.value.trim() }
+        contact: { email: f.email.value.trim(), formEndpoint: f.contactEndpoint.value.trim() },
+        newsletter: { provider: f.newsProvider.value.trim() || (f.newsEndpoint.value.trim() ? 'formspree' : 'mailto'), endpoint: f.newsEndpoint.value.trim() }
     };
     showToast('Site ayarlari kaydedildi (yerel). GitHub\'a gonderin.');
+    // Auto-publish if checkbox enabled
+    const autoPush = localStorage.getItem('PIXWARE_SITE_AUTO_PUSH') === 'true';
+    if (autoPush) {
+      setTimeout(() => {
+        showToast('Otomatik yayinlanıyor...');
+        publishSiteSettings();
+      }, 200);
+    }
+  });
+  // publish button - save locally first then publish
+  document.getElementById('publish-site')?.addEventListener('click', async () => {
+    const form = document.getElementById('site-form');
+    if (form) form.dispatchEvent(new Event('submit', { cancelable: true }));
+    setTimeout(() => publishSiteSettings(), 150);
+  });
+  // Auto-publish checkbox setup (if exists)
+  const autoPushCheckbox = document.getElementById('site-auto-push');
+  if (autoPushCheckbox) {
+    autoPushCheckbox.addEventListener('change', (e) => {
+      localStorage.setItem('PIXWARE_SITE_AUTO_PUSH', e.target.checked);
+    });
+    autoPushCheckbox.checked = localStorage.getItem('PIXWARE_SITE_AUTO_PUSH') === 'true';
+  }
+}
+
+function renderLauncherPanel() {
+  const el = document.getElementById('panel-launcher');
+  if (!el) return;
+  const l = adminState.launcher || {};
+  el.innerHTML = `
+    <h2 class="section-title">Launcher Ayarlari</h2>
+    <form id="launcher-form" class="admin-form-grid">
+      <div class="form-group"><label>Surum</label><input name="version" value="${esc(l.version || '')}"></div>
+      <div class="form-group"><label>Durum</label><input name="status" value="${esc(l.status || '')}" placeholder="beta, stable"></div>
+      <div class="form-group"><label>Windows indirme URL</label><input name="windows" value="${esc(l.downloads?.windows || '')}" placeholder="https://..." ></div>
+      <div class="form-group"><label>Linux indirme URL</label><input name="linux" value="${esc(l.downloads?.linux || '')}" placeholder="https://..." ></div>
+      <button type="submit" class="btn btn-primary">Kaydet</button>
+    </form>
+    <p class="admin-hint">Launcher ayarlari kaydedildikten sonra GitHub'a gonderin.</p>
+  `;
+  document.getElementById('launcher-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const f = e.target;
+    adminState.launcher = {
+      version: f.version.value.trim(),
+      status: f.status.value.trim(),
+      downloads: {
+        windows: f.windows.value.trim(),
+        linux: f.linux.value.trim()
+      },
+      requirements: adminState.launcher.requirements || []
+    };
+    showToast('Launcher ayarlari kaydedildi (yerel). GitHub\'a gonderin.');
   });
 }
 
@@ -384,6 +453,28 @@ function renderGithubPanel() {
   `;
   document.getElementById('gh-form').addEventListener('submit', publishToGithub);
   document.getElementById('export-all').addEventListener('click', exportAllJson);
+}
+
+async function publishSiteSettings() {
+  const saved = JSON.parse(localStorage.getItem(ADMIN_GH_SETTINGS) || '{}');
+  const owner = saved.owner;
+  const repo = saved.repo;
+  const branch = saved.branch || 'master';
+  const token = saved.token;
+  if (!owner || !repo || !token) {
+    showToast('GitHub ayarlariniz eksik. Lütfen "GitHub Yayin" paneline owner/repo/token girin.', true);
+    return;
+  }
+  try {
+    showToast('Site ayarlari GitHub\'a gonderiliyor...');
+    const content = JSON.stringify(adminState.site, null, 2) + '\n';
+    const existing = await githubGetFile(owner, repo, 'data/site.json', token);
+    await githubPutFile(owner, repo, branch, 'data/site.json', content, 'Pixware Admin: site.json', token, existing?.sha);
+    showToast('Site ayarlari basariyla GitHub\'a gonderildi.');
+  } catch (err) {
+    console.error(err);
+    showToast('Yayin hatasi: ' + (err.message || ''), true);
+  }
 }
 
 function openEditor(key, index) {
@@ -419,47 +510,62 @@ function openEditor(key, index) {
 }
 
 function gameEditorForm(g) {
+  const nameTr = (g.name && typeof g.name === 'object') ? esc(g.name.tr || '') : esc(g.name || '');
+  const nameEn = (g.name && typeof g.name === 'object') ? esc(g.name.en || '') : '';
+  const descTr = (g.description && typeof g.description === 'object') ? esc(g.description.tr || '') : esc(g.description || '');
+  const descEn = (g.description && typeof g.description === 'object') ? esc(g.description.en || '') : '';
+  const shots = (g.screenshots && Array.isArray(g.screenshots)) ? esc((g.screenshots || []).join('\n')) : '';
   return `<h3>Oyun</h3>
     <div class="admin-form-grid">
-      <div class="form-group"><label>Ad</label><input id="e-name" value="${esc(g.name)}"></div>
+      <div class="form-group"><label>Ad (TR)</label><input id="e-name-tr" value="${nameTr}"></div>
+      <div class="form-group"><label>Ad (EN)</label><input id="e-name-en" value="${nameEn}"></div>
       <div class="form-group"><label>Slug</label><input id="e-slug" value="${esc(g.slug)}"></div>
       <div class="form-group"><label>Kategori</label><input id="e-category" value="${esc(g.category)}"></div>
+      <div class="form-group"><label>Gorsel URL</label><input id="e-image" value="${esc(g.imageUrl)}" placeholder="/assets/games/oyun1.jpg"></div>
       <div class="form-group"><label>Emoji</label><input id="e-emoji" value="${esc(g.emoji)}"></div>
       <div class="form-group"><label>Rating</label><input id="e-rating" type="number" step="0.1" value="${g.rating ?? 4.5}"></div>
       <div class="form-group"><label>Boyut</label><input id="e-size" value="${esc(g.size)}"></div>
       <div class="form-group"><label><input type="checkbox" id="e-featured" ${g.featured ? 'checked' : ''}> One cikan</label></div>
-      <div class="form-group"><label>Aciklama</label><textarea id="e-desc" rows="4">${esc(g.description)}</textarea></div>
+      <div class="form-group"><label>Aciklama (TR)</label><textarea id="e-desc-tr" rows="4">${descTr}</textarea></div>
+      <div class="form-group"><label>Aciklama (EN)</label><textarea id="e-desc-en" rows="4">${descEn}</textarea></div>
+      <div class="form-group"><label>Gorseller (her satir bir URL)</label><textarea id="e-screenshots" rows="3" placeholder="/assets/screenshots/oyun1.png">${shots}</textarea></div>
     </div>`;
 }
 
 function collectEditor(key, old, isNew) {
   if (key === 'games') {
-    const name = document.getElementById('e-name').value.trim();
-    if (!name) { showToast('Ad gerekli', true); return null; }
-    const slug = document.getElementById('e-slug').value.trim() || name.toLowerCase().replace(/\s+/g, '-');
+    const nameTr = document.getElementById('e-name-tr').value.trim();
+    const nameEn = document.getElementById('e-name-en').value.trim();
+    if (!nameTr && !nameEn) { showToast('Ad (TR veya EN) gerekli', true); return null; }
+    const slug = document.getElementById('e-slug').value.trim() || (nameTr || nameEn).toLowerCase().replace(/\s+/g, '-');
     const maxId = adminState.games.reduce((m, g) => Math.max(m, g.id || 0), 0);
     return {
       id: old.id ?? maxId + 1,
       slug,
-      name,
+      name: { tr: nameTr || (old.name && old.name.tr) || '', en: nameEn || (old.name && old.name.en) || '' },
       category: document.getElementById('e-category').value.trim(),
+      imageUrl: document.getElementById('e-image').value.trim(),
       emoji: document.getElementById('e-emoji').value.trim() || '🎮',
       rating: parseFloat(document.getElementById('e-rating').value) || 4.5,
       size: document.getElementById('e-size').value.trim(),
       featured: document.getElementById('e-featured').checked,
-      description: document.getElementById('e-desc').value.trim()
+      description: { tr: document.getElementById('e-desc-tr').value.trim(), en: document.getElementById('e-desc-en').value.trim() },
+      screenshots: document.getElementById('e-screenshots').value.split('\n').map(s=>s.trim()).filter(Boolean)
     };
   }
   if (key === 'posts') {
-    const title = document.getElementById('e-title').value.trim();
-    if (!title) { showToast('Baslik gerekli', true); return null; }
-    const slug = document.getElementById('e-slug').value.trim() || title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+    const titleTr = document.getElementById('e-title-tr').value.trim();
+    const titleEn = document.getElementById('e-title-en').value.trim();
+    if (!titleTr && !titleEn) { showToast('Baslik (TR veya EN) gerekli', true); return null; }
+    const slug = document.getElementById('e-slug').value.trim() || (titleTr || titleEn).toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
     return {
       slug,
-      title,
+      title: { tr: titleTr, en: titleEn },
       date: document.getElementById('e-date').value || new Date().toISOString().slice(0, 10),
-      excerpt: document.getElementById('e-excerpt').value.trim(),
-      body: document.getElementById('e-body').value.trim()
+      category: document.getElementById('e-category').value.trim(),
+      author: document.getElementById('e-author').value.trim(),
+      excerpt: { tr: document.getElementById('e-excerpt-tr').value.trim(), en: document.getElementById('e-excerpt-en').value.trim() },
+      body: { tr: document.getElementById('e-body-tr').value.trim(), en: document.getElementById('e-body-en').value.trim() }
     };
   }
   if (key === 'jobs') {
@@ -496,12 +602,23 @@ function collectEditor(key, old, isNew) {
 }
 
 function postEditorForm(p) {
+  const titleTr = (p.title && typeof p.title === 'object') ? esc(p.title.tr || '') : esc(p.title || '');
+  const titleEn = (p.title && typeof p.title === 'object') ? esc(p.title.en || '') : '';
+  const excerptTr = (p.excerpt && typeof p.excerpt === 'object') ? esc(p.excerpt.tr || '') : esc(p.excerpt || '');
+  const excerptEn = (p.excerpt && typeof p.excerpt === 'object') ? esc(p.excerpt.en || '') : '';
+  const bodyTr = (p.body && typeof p.body === 'object') ? esc(p.body.tr || '') : esc(p.body || '');
+  const bodyEn = (p.body && typeof p.body === 'object') ? esc(p.body.en || '') : '';
   return `<h3>Haber</h3><div class="admin-form-grid">
-    <div class="form-group"><label>Baslik</label><input id="e-title" value="${esc(p.title)}"></div>
+    <div class="form-group"><label>Baslik (TR)</label><input id="e-title-tr" value="${titleTr}"></div>
+    <div class="form-group"><label>Baslik (EN)</label><input id="e-title-en" value="${titleEn}"></div>
     <div class="form-group"><label>Slug</label><input id="e-slug" value="${esc(p.slug)}"></div>
     <div class="form-group"><label>Tarih</label><input id="e-date" type="date" value="${esc(p.date)}"></div>
-    <div class="form-group"><label>Ozet</label><textarea id="e-excerpt" rows="2">${esc(p.excerpt)}</textarea></div>
-    <div class="form-group"><label>Icerik (HTML)</label><textarea id="e-body" rows="8">${esc(p.body)}</textarea></div>
+    <div class="form-group"><label>Kategori</label><input id="e-category" value="${esc(p.category)}"></div>
+    <div class="form-group"><label>Yazar</label><input id="e-author" value="${esc(p.author)}"></div>
+    <div class="form-group"><label>Ozet (TR)</label><textarea id="e-excerpt-tr" rows="2">${excerptTr}</textarea></div>
+    <div class="form-group"><label>Ozet (EN)</label><textarea id="e-excerpt-en" rows="2">${excerptEn}</textarea></div>
+    <div class="form-group"><label>Icerik (HTML TR)</label><textarea id="e-body-tr" rows="6">${bodyTr}</textarea></div>
+    <div class="form-group"><label>Icerik (HTML EN)</label><textarea id="e-body-en" rows="6">${bodyEn}</textarea></div>
   </div>`;
 }
 
@@ -535,6 +652,7 @@ function renderAllPanels() {
   renderJobsList();
   renderTeamList();
   renderSitePanel();
+  renderLauncherPanel();
   renderAdminsPanel();
   renderGithubPanel();
 }
