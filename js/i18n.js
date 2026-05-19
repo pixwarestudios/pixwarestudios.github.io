@@ -3,6 +3,41 @@
   const KEY = 'pixware_lang';
   const defaultLang = localStorage.getItem(KEY) || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'tr');
   const translations = {
+    tr: {
+      'nav.home': 'Ana Sayfa',
+      'nav.games': 'Oyunlar',
+      'nav.launcher': 'Launcher',
+      'nav.news': 'Haberler',
+      'nav.careers': 'Kariyer',
+      'nav.about': 'Hakkımızda',
+      'nav.contact': 'İletişim',
+      'nav.download': 'İndir',
+      'brand.name': 'PIXWARE',
+      'brand.sub': 'STUDIOS',
+      'hero.title': 'Pixware Studios',
+      'hero.subtitle': 'Neon dünyalarda unutulmaz oyun deneyimleri yaratıyoruz. Oyunlarımızı tek launcher ile yönetin, keşfedin ve oynayın.',
+      'hero.cta_download': 'Launcher İndir',
+      'hero.cta_explore': 'Oyunları Keşfet',
+      'news.title': 'Haberler',
+      'news.subtitle': 'Stüdyodan güncellemeler ve duyurular.',
+      'news.loading': 'Yükleniyor...',
+      'footer.tag': 'Bağımsız oyun stüdyosu. Neon dünyalarda unutulmaz deneyimler yaratıyoruz.',
+      'footer.rights': 'Tüm hakları saklıdır.',
+      'footer.made': 'Made with neon in Turkey',
+      'search.placeholder': 'Oyun ara...',
+      'latest.news': 'Son Haberler',
+      'featured.games': 'Öne Çıkan Oyunlar',
+      'all.games': 'Tüm Oyunlar',
+      'newsletter.title': 'Bültene Katılın',
+      'newsletter.subtitle': 'Yeni oyunlar, güncellemeler ve beta davetleri için e-posta listemize kaydolun.',
+      'newsletter.email': 'E-posta adresiniz',
+      'newsletter.subscribe': 'Abone Ol',
+      'about.title': 'Hakkımızda',
+      'careers.title': 'Kariyer',
+      'contact.title': 'İletişim',
+      'launcher.title': 'Launcher',
+      'launcher.subtitle': 'Oyun kütüphaneniz, mağaza, arkadaşlar ve indirmeler — hepsi mor neon temada tek uygulamada.'
+    },
     en: {
       'nav.home': 'Home',
       'nav.games': 'Games',
@@ -62,6 +97,8 @@
       const val = (translations[lang] && translations[lang][key]);
       if (val) el.placeholder = val;
     });
+    // trigger custom event for dynamic content reload
+    window.dispatchEvent(new CustomEvent('langchange', { detail: { lang } }));
   }
 
   function init(){

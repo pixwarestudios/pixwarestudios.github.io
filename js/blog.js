@@ -45,6 +45,12 @@ async function renderPostsList(containerId, limit) {
   const list = limit ? sorted.slice(0, limit) : sorted;
   container.innerHTML = `<div class="grid grid-2">${list.map((p) => postCardHtml(p, base)).join('')}</div>`;
   container.querySelectorAll('.fade-in').forEach((el) => el.classList.add('visible'));
+
+  // Re-render on language change
+  window.addEventListener('langchange', () => {
+    container.innerHTML = `<div class="grid grid-2">${list.map((p) => postCardHtml(p, base)).join('')}</div>`;
+    container.querySelectorAll('.fade-in').forEach((el) => el.classList.add('visible'));
+  });
 }
 
 async function renderPostDetail() {

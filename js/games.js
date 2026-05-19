@@ -53,9 +53,11 @@ function gameCardHtml(game, showActions = true) {
 
 function showGameModal(game) {
   const lang = (window.i18n && window.i18n.getLang) ? window.i18n.getLang() : 'tr';
+  const name = (game.name && typeof game.name === 'object') ? (game.name[lang] || game.name.tr || game.name.en) : game.name;
+  const desc = (game.description && typeof game.description === 'object') ? (game.description[lang] || game.description.tr || game.description.en) : game.description;
   const mainImg = (game.screenshots && game.screenshots.length) ? game.screenshots[0] : game.imageUrl;
   const imageHtml = mainImg
-    ? `<div style="margin-bottom:1rem;"><img id="modal-main-image" src="${mainImg}" alt="${(game.name && typeof game.name==='object')? (game.name[lang]||game.name.tr) : game.name} görseli" style="width:100%;border-radius:16px;object-fit:cover;max-height:320px;"></div>`
+    ? `<div style="margin-bottom:1rem;"><img id="modal-main-image" src="${mainImg}" alt="${name} görseli" style="width:100%;border-radius:16px;object-fit:cover;max-height:320px;"></div>`
     : '';
   const html = `
     ${imageHtml}
@@ -68,21 +70,21 @@ function showGameModal(game) {
         <p><strong>Rating:</strong> ⭐ ${game.rating}</p>
       </div>
       <div>
-        <h3 style="color: var(--neon-secondary); margin-bottom: 0.5rem;">Sistem Gereksinimleri</h3>
+        <h3 style="color: var(--neon-secondary); margin-bottom: 0.5rem;">${(lang==='en')? 'System Requirements' : 'Sistem Gereksinimleri'}</h3>
         <ul>
-          <li>💾 8GB boş alan</li>
-          <li>🖥️ GTX 1060 veya üstü</li>
+          <li>💾 ${(lang==='en')? '8GB free space' : '8GB boş alan'}</li>
+          <li>🖥️ ${(lang==='en')? 'GTX 1060 or higher' : 'GTX 1060 veya üstü'}</li>
           <li>🧠 8GB RAM</li>
-          <li>🔌 İnternet bağlantısı</li>
+          <li>🔌 ${(lang==='en')? 'Internet connection' : 'İnternet bağlantısı'}</li>
         </ul>
       </div>
     </div>
     <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem;">
-      <a href="launcher.html" class="btn btn-primary" style="flex:1;text-align:center;">Launcher ile İndir</a>
-      <button class="btn" type="button" onclick="closeModal()" style="flex:1;">Kapat</button>
+      <a href="launcher.html" class="btn btn-primary" style="flex:1;text-align:center;">${(lang==='en')? 'Download with Launcher' : 'Launcher ile İndir'}</a>
+      <button class="btn" type="button" onclick="closeModal()" style="flex:1;">${(lang==='en')? 'Close' : 'Kapat'}</button>
     </div>
   `;
-  openModal(game.name, html);
+  openModal(name, html);
 }
 
 function bindGameDetailButtons(container, games) {
@@ -142,4 +144,11 @@ async function renderGamesGrid(containerId, options = {}) {
   categorySelect.addEventListener('change', updateGrid);
 
   updateGrid();
+
+  // Re-render on language change
+  window.addEventListener('langchange', () => {
+    const newPlaceholder = (window.i18n && typeof window.i18n.t === 'function') ? window.i18n.t('search.placeholder') || 'Oyun ara...' : 'Oyun ara...';
+    searchInput.placeholder = newPlaceholder;
+    updateGrid();
+  });
 }
