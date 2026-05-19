@@ -5,12 +5,9 @@ const PIXWARE_CONFIG = {
   formspreeContact: '',
   launcherRepo: '../PixwareLauncher',
   useMailtoFallback: true,
-  // Admin sifresi SHA-256 — varsayilan: pixware2026
-  // Yeni hash: tarayici konsolunda hashPassword('yeni-sifre') (admin.js)
-  adminPasswordHash: 'bcb2e3f83a9b925478a9b2c471959b388c7c9dd4fe9873d8ef08adc5ecff5ab2',
-  // Kurucu sifresi — yalniz kurucu yeni admin ekleyebilir
-  // Varsayilan: founder2026 — degistirmek icin: hashPassword('yeni-kurucu-sifresi')
-  founderPasswordHash: '1e63b18249a8ca718cb1650cfea727de9fa9dbd34be456778a6c753c754921bb',
+  // Kurucu sifresi SHA-256
+  // Bu kurucu sifresi: akdogan2526pixware
+  founderPasswordHash: '54e863c88dcdf9bdc1ec2056a41457b49f362e21c716e3451079c119c44feb1a',
   // Admin listesi — kurucu yeni adminler ekleyebilir
   admins: [
     { id: 'founder', name: 'Kurucu', role: 'founder', createdAt: '2026-05-19' }

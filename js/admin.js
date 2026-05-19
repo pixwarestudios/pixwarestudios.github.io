@@ -65,29 +65,20 @@ function showToast(msg, isError) {
   setTimeout(() => el.remove(), 4000);
 }
 
-async function tryLogin(password, asFounder = false) {
+async function tryLogin(password) {
   const hash = await hashPassword(password);
   let adminId = null;
   let role = null;
 
-  if (asFounder) {
-    if (hash === PIXWARE_CONFIG.founderPasswordHash) {
-      adminId = 'founder';
-      role = 'founder';
-    }
+  if (hash === PIXWARE_CONFIG.founderPasswordHash) {
+    adminId = 'founder';
+    role = 'founder';
   } else {
-    // Normal admin kontrolü
-    if (hash === PIXWARE_CONFIG.adminPasswordHash) {
-      adminId = 'admin1';
-      role = 'admin';
-    } else {
-      // Ek adminleri kontrol et
-      const admins = loadAdmins();
-      const found = admins.find(a => a.passwordHash === hash);
-      if (found) {
-        adminId = found.id;
-        role = found.role;
-      }
+    const admins = loadAdmins();
+    const found = admins.find((a) => a.passwordHash === hash);
+    if (found) {
+      adminId = found.id;
+      role = found.role;
     }
   }
 
@@ -647,17 +638,7 @@ function initAdminApp() {
 
 async function init() {
   const loginForm = document.getElementById('login-form');
-  const founderToggle = document.getElementById('founder-toggle');
-  let isFounderMode = false;
-  
-  if (founderToggle) {
-    founderToggle.addEventListener('click', () => {
-      isFounderMode = !isFounderMode;
-      founderToggle.textContent = isFounderMode ? 'Normal Girise Geri Don' : 'Kurucu Girisini Ac';
-      document.getElementById('admin-password').focus();
-    });
-  }
-  
+
   if (isLoggedIn()) {
     try {
       await loadAllData();
@@ -672,12 +653,12 @@ async function init() {
     e.preventDefault();
     const pw = document.getElementById('admin-password').value;
     const err = document.getElementById('login-error');
-    if (await tryLogin(pw, isFounderMode)) {
+    if (await tryLogin(pw)) {
       err.textContent = '';
       await loadAllData();
       initAdminApp();
     } else {
-      err.textContent = isFounderMode ? 'Yanlis kurucu sifresi' : 'Yanlis sifre';
+      err.textContent = 'Yanlis sifre';
     }
   });
 }
