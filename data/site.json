@@ -1,7 +1,10 @@
 {
   "studio": {
-    "name": "Pixware Studios",
-    "tagline": "Neon dünyalarda unutulmaz oyun deneyimleri",
+    "name": {
+      "tr": "Pixware Studios",
+      "en": ""
+    },
+    "tagline": "",
     "founded": "2026",
     "vision": [
       "Pixware Studios, oyunculara unutulmaz deneyimler sunan bağımsız bir oyun stüdyosudur. Oyunlarımızı kendi launcher ekosistemimizle bir araya getiriyoruz.",
@@ -14,8 +17,8 @@
       "en": "Pixware Studios"
     },
     "subtitle": {
-      "tr": "Neon dünyalarda unutulmaz oyun deneyimleri yaratıyoruz. Oyunlarımızı tek launcher ile yönetin, keşfedin ve oynayın.",
-      "en": "Creating unforgettable game experiences in neon worlds. Manage, discover and play with our launcher."
+      "tr": "Oyunlarımızı tek launcher ile yönetin, keşfedin ve oynayın.",
+      "en": "Manage, discover and play with our launcher."
     }
   },
   "social": {
@@ -25,6 +28,11 @@
     "youtube": ""
   },
   "contact": {
-    "email": "info@pixwarestudios.com"
+    "email": "info@pixwarestudios.com",
+    "formEndpoint": ""
+  },
+  "newsletter": {
+    "provider": "mailto",
+    "endpoint": ""
   }
 }
