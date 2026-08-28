@@ -34,5 +34,23 @@
       "tr": "<p>2026 yaz staj programımız açıldı. Unity, web veya Electron deneyimi olan öğrencileri ekibimize katılmaya davet ediyoruz.</p><p>Detaylar kariyer sayfamızda.</p>",
       "en": "<p>Our Summer 2026 internship program is open. We invite students with Unity, web or Electron experience to join us.</p><p>See the careers page for details.</p>"
     }
+  },
+  {
+    "slug": "eleman-ariyoz-ya",
+    "title": {
+      "tr": "Eleman ariyoz ya",
+      "en": ""
+    },
+    "date": "2031-08-28",
+    "category": "Ekip",
+    "author": "Enes",
+    "excerpt": {
+      "tr": "Ekip arkadasi ariyoz \nC#  HTML  Python   3D Artist  2D Artist   Pixel Artist\nBirini karsilasin yeter",
+      "en": ""
+    },
+    "body": {
+      "tr": "",
+      "en": ""
+    }
   }
 ]
