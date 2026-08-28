@@ -3,11 +3,11 @@
     "id": "enes",
     "name": "Enes Akdoğan",
     "role": "Kurucu & Lead Developer",
-    "bio": "Oyun mekanikleri, launcher mimarisi ve stüdyo vizyonundan sorumlu. Unity ve Electron ile tam yığın geliştirme.\nyaş 16 :D\nenesa@pixwarestudios.com",
+    "bio": "Buranın sorumlusu..\nyaş 16 :D\nenesa@pixwarestudios.com",
     "avatar": "👾",
     "order": 1,
     "social": {
-      "github": "",
+      "github": "https://github.com/EnesAkdogan",
       "twitter": "",
       "linkedin": ""
     }
