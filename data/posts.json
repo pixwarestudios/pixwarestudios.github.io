@@ -18,24 +18,6 @@
     }
   },
   {
-    "slug": "kariyer-staj",
-    "title": {
-      "tr": "Yaz Staj Programı 2026",
-      "en": "Summer Internship Program 2026"
-    },
-    "date": "2026-05-19",
-    "category": "Kariyer",
-    "author": "İK Ekibi",
-    "excerpt": {
-      "tr": "Oyun geliştirme ve UI/UX alanında stajyer arıyoruz.",
-      "en": "We’re hiring interns for game development and UI/UX."
-    },
-    "body": {
-      "tr": "<p>2026 yaz staj programımız açıldı. Unity, web veya Electron deneyimi olan öğrencileri ekibimize katılmaya davet ediyoruz.</p><p>Detaylar kariyer sayfamızda.</p>",
-      "en": "<p>Our Summer 2026 internship program is open. We invite students with Unity, web or Electron experience to join us.</p><p>See the careers page for details.</p>"
-    }
-  },
-  {
     "slug": "eleman-ariyoz-ya",
     "title": {
       "tr": "Eleman ariyoz ya",
