@@ -9,29 +9,11 @@
     "category": "Duyuru",
     "author": "Kurucu",
     "excerpt": {
-      "tr": "Bağımsız oyun geliştirme yolculuğumuza başlıyoruz. Vizyonumuz: neon, hikaye ve topluluk.",
-      "en": "We’re starting our indie game development journey. Our vision: neon, narrative and community."
+      "tr": "Bağımsız oyun geliştirme yolculuğumuza başlıyoruz.",
+      "en": "We’re starting our indie game development journey."
     },
     "body": {
-      "tr": "<p>Pixware Studios, bağımsız oyun geliştirmeye tutkuyla bağlı küçük bir ekip olarak kuruldu. Unity ve Electron ile hem oyun hem de launcher ekosistemi inşa ediyoruz.</p><p>Bizi takip etmeye devam edin — ilk oyunlarımız ve launcher yol haritamız hakkında düzenli haberler paylaşacağız.</p>",
-      "en": "<p>Pixware Studios was founded as a small, passionate indie game team. We build games and a launcher ecosystem using Unity and Electron.</p><p>Follow us for regular updates on our first games and the launcher roadmap."
-    }
-  },
-  {
-    "slug": "eleman-ariyoz-ya",
-    "title": {
-      "tr": "Eleman ariyoz ya",
-      "en": ""
-    },
-    "date": "2031-08-28",
-    "category": "Ekip",
-    "author": "Enes",
-    "excerpt": {
-      "tr": "Ekip arkadasi ariyoz \nC#  HTML  Python   3D Artist  2D Artist   Pixel Artist\nBirini karsilasin yeter",
-      "en": ""
-    },
-    "body": {
-      "tr": "Ekip arkadasi ariyoz \nC#  HTML  Python   3D Artist  2D Artist   Pixel Artist\nBirini karsilasin yeter",
+      "tr": "",
       "en": ""
     }
   }
